@@ -1,100 +1,163 @@
-# Classification-and-Captioning-Aircraft-Damage-Using-Pretrained-Models
+# ✈️ Aircraft Damage Classification and Image Captioning
 
-📖 About
+A deep learning project that combines computer vision and natural language processing to analyze aircraft damage images. The project uses transfer learning with VGG16 to classify aircraft damage and a BLIP transformer model to generate image captions and summaries.
 
-This is the Final Project of the IBM AI Engineering Professional Certificate on Coursera. It tackles a real-world aviation safety problem: automatically detecting and describing aircraft damage using Deep Learning and Transformer-based models.
+---
 
-The project is split into two parts — a classification task (dent vs. crack detection) and an image captioning task (generating natural language descriptions of the damage).
+## 📖 Project Overview
 
+Aircraft inspections are essential for ensuring aviation safety, but manual inspection processes can be time-consuming and prone to human error. This project explores how artificial intelligence can assist aircraft damage assessment through automated image analysis.
 
-⏱️ Estimated time: 90 minutes
+The project consists of two major components:
 
+### 1. Aircraft Damage Classification
 
+A VGG16-based transfer learning model is trained to classify aircraft damage into:
 
+* Dent
+* Crack
 
-🎯 Project Objectives
+### 2. Image Captioning and Summarization
 
+A BLIP (Bootstrapping Language-Image Pretraining) transformer model is used to generate:
 
-✅ Classify aircraft damage images into "dent" or "crack" using VGG16 (Transfer Learning)
-✅ Preprocess and augment image data using Keras ImageDataGenerator
-✅ Evaluate model performance with accuracy curves & visualizations
-✅ Generate image captions and summaries using the BLIP Transformer model
-✅ Implement a custom Keras layer within the pipeline
+* Natural language image captions
+* Descriptive image summaries
 
+This creates a complete pipeline capable of both recognizing aircraft damage and describing it in human-readable language.
 
+---
 
-🧠 Project Architecture
+## 🎯 Objectives
 
-Aircraft Image
-      │
-      ▼
-┌─────────────────────────┐     ┌───────────────────────────┐
-│   PART 1: Classification│     │  PART 2: Image Captioning  │
-│                         │     │                            │
-│  VGG16 (pretrained)     │     │  BLIP Transformer Model    │
-│  + Custom Dense Layers  │     │  (HuggingFace)             │
-│         ↓               │     │         ↓                  │
-│  "dent" or "crack" 🔍   │     │  Natural language caption  │
-└─────────────────────────┘     └───────────────────────────┘
+* Classify aircraft damage using deep learning.
+* Apply transfer learning using a pretrained VGG16 network.
+* Evaluate model performance using accuracy and loss metrics.
+* Generate image captions using BLIP.
+* Generate descriptive summaries from aircraft images.
+* Demonstrate the integration of computer vision and transformer-based NLP models.
 
+---
 
-📋 Task Breakdown
+## 🧠 Aircraft Damage Classification
 
-TaskDescriptionTask 1Create valid_generator for validation dataTask 2Create test_generator for test dataTask 3Load the VGG16 pretrained modelTask 4Compile the model with Adam optimizerTask 5Train the model (5 epochs)Task 6Plot accuracy curves (train vs. validation)Task 7Visualize predictions on test imagesTask 8Implement a custom Keras layer helper functionTask 9Generate an image caption using BLIPTask 10Generate an image summary using BLIP
+### Model Architecture
 
+The classification model uses:
 
-📂 Dataset
+* VGG16 (ImageNet Pretrained)
+* Transfer Learning
+* Feature Extraction
+* Dense Classification Layers
+* Binary Classification Output
 
+### Workflow
 
-Source: Roboflow Aircraft Damage Detection Dataset
-License: CC BY 4.0
-Structure:
+1. Download and preprocess aircraft image dataset.
+2. Normalize image data using ImageDataGenerator.
+3. Extract image features using VGG16.
+4. Train a custom classifier head.
+5. Evaluate classification performance.
 
+---
 
-aircraft_damage_dataset_v1/
-├── train/
-│   ├── dent/
-│   └── crack/
-├── valid/
-│   ├── dent/
-│   └── crack/
-└── test/
-    ├── dent/
-    └── crack/
+## 📊 Classification Results
 
+### Training and Validation Loss
 
-🛠️ Tech Stack
+![Training Loss](images/training_loss.png)
 
-ToolPurposePython 3.xCore languageTensorFlow / KerasModel building & trainingVGG16Pretrained CNN for feature extractionBLIP (HuggingFace)Image captioning & summarizationPyTorchBackend for Transformer modelMatplotlibVisualizing accuracy & predictionsImageDataGeneratorReal-time image preprocessing & augmentation
+### Training and Validation Accuracy
 
+![Training Accuracy](images/training_accuracy.png)
 
-📊 Model Configuration
+### Prediction Example
 
-pythonbatch_size = 32
-n_epochs   = 5
-img_size   = (224, 224)   # VGG16 input size
-optimizer  = Adam
-loss       = binary_crossentropy
+![Prediction Example](images/prediction_example.png)
 
+---
 
-📂 File Structure
+## 🤖 Image Captioning and Summarization
 
-📦 IBM-AI-Engineering-Final-Project
- ┣ 📓 Final_Project_Classification_and_Captioning.ipynb
- ┗ 📄 README.md
+### Model
 
+The project uses:
 
-📜 Course
+* BLIP (Bootstrapping Language-Image Pretraining)
+* Hugging Face Transformers
+* Image-to-Text Generation
 
+### Workflow
 
-🎓 Final Project of the IBM AI Engineering Professional Certificate
-offered by IBM on Coursera.
+1. Load aircraft image.
+2. Process image with BLIP processor.
+3. Generate caption.
+4. Generate detailed summary.
 
+---
 
+## 📝 Caption Generation Results
 
+### Generated Caption
 
-🙋 Author
+![Generated Caption](images/generated_caption.png)
 
-Samridhi Bhardwaj
+### Generated Summary
 
+![Generated Summary](images/generated_summary.png)
 
+---
+
+## 🛠️ Technologies Used
+
+| Technology   | Purpose                 |
+| ------------ | ----------------------- |
+| Python       | Programming Language    |
+| TensorFlow   | Deep Learning Framework |
+| Keras        | Model Development       |
+| VGG16        | Transfer Learning       |
+| Transformers | NLP Framework           |
+| BLIP         | Image Captioning        |
+| NumPy        | Numerical Computing     |
+| Matplotlib   | Visualization           |
+| Pillow       | Image Processing        |
+
+---
+
+## 📁 Project Structure
+
+```text
+aircraft-damage-classification-captioning/
+│
+├── README.md
+├── requirements.txt
+├── main.py
+│
+├── src/
+│   ├── data_loader.py
+│   ├── classifier.py
+│   ├── visualization.py
+│   └── captioning.py
+│
+├── images/
+│
+└── models/
+```
+
+---
+
+## 🚀 Future Improvements
+
+* Experiment with ResNet50 and EfficientNet architectures.
+* Expand the dataset with additional damage categories.
+* Deploy the model as a web application.
+* Integrate object detection for localized damage analysis.
+* Fine-tune larger vision-language models for richer image descriptions.
+
+---
+
+## 👨‍💻 Author
+
+**Samridhi Bhardwaj**
+
+Originally developed as part of an AI and Deep Learning project and later refactored into a structured portfolio project.
