@@ -73,7 +73,7 @@ The classification system uses:
 
 ### Accuracy Curve
 
-![Accuracy Curve](images/accuracy_curve.png)
+![Accuracy Curve](images/training_accuracy.png)
 
 ### Prediction Example
 
